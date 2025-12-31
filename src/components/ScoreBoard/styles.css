@@ -1,0 +1,16 @@
+/* CSS for ScoreBoard */
+.scores-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.scores {
+    width: 100px;
+    border: 4px double #306230;
+    background: #9BBC0F;
+    padding: 1em;
+}
+.scores h4 {
+    margin: 0;
+    text-decoration: underline;
+}

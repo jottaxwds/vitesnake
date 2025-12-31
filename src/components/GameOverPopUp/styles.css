@@ -1,0 +1,20 @@
+/* CSS for GameOverPopUp */
+.gameover {
+    padding: 3.22rem;
+    border: 4px double #0F380F;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #9BBC0F;
+}
+.reset-button {
+    border: 3px solid #306230;
+    background: none;
+    cursor: pointer;
+}
+.reset-button:active {
+    border-style: inset;
+    border-color: #0F380F;
+}

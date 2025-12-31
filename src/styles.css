@@ -1,0 +1,51 @@
+/* CSS replacement for styles.ts (global shared styles) */
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.board-wrapper {
+    display: grid;
+    margin: auto;
+    background: #9BBC0F;
+    width: max-content;
+    border: 0.01px solid #306230;
+    /* Set grid-template-columns and -rows via style attr in JSX */
+}
+
+.cell {
+    width: 0.5em;
+    height: 0.5em;
+    border: 0.01px solid #306230;
+}
+
+.cell.filled {
+    background-color: #0F380F;
+}
+
+.game {
+    flex: 1;
+}
+
+.heading {
+    text-align: center;
+}
+
+.howto {
+    font-size: 12px;
+    margin-top: 0;
+    font-style: italic;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.score {
+    width: 100%;
+    text-align: center;
+}
