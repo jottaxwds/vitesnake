@@ -1,28 +1,16 @@
 import { type GetNewSnakeHeadArgs, type NewSnakeHeadLookUp, Direction, type BodyDot, type Snake, type GameState } from "./types";
 
 const DEFAULT_BOARD_SIZE = 20;
+const INITIAL_GAME_SPEED = 150;
+
+const getGameSpeedFromScore = (score: number) => {
+  const speed = 150 - 0.3 * score;
+  return Math.max(speed, 30);
+}
 
 const snakeDefault = {
     body: [
       [0,0],
-      [0,1],
-      [0,2],
-      [0,3],
-      [0,4],
-      [0,5],
-      [0,6],
-      [0,7],
-      [0,8],
-      [0,9],
-      [0,10],
-      [0,11],
-      [0,12],
-      [0,13],
-      [0,14],
-      [0,15],
-      [0,16],
-      [0,17],
-      [0,18],
     ],
     direction: Direction.RIGHT,
 } as Snake;
@@ -46,6 +34,7 @@ export const defaultGameState = {
     boardSize: DEFAULT_BOARD_SIZE,
     snake: {...snakeDefault},
     fruit: generateNewFruit(DEFAULT_BOARD_SIZE),
+    gameSpeed: INITIAL_GAME_SPEED,
 }
 
 const newSnakeHeadLookUp = ({prevHead, boardSize }: GetNewSnakeHeadArgs): NewSnakeHeadLookUp => ({
@@ -80,12 +69,14 @@ const updateSnakeBoard = (gameState: GameState, arrowDirection: Direction): Game
     const eatsFruit = newHead[0] === fruit[0] && newHead[1] === fruit[1];
     const newBody = moveSnakeBody(snake.body, newHead, eatsFruit);
     const newSnake = { ...snake, body: newBody, direction: inputDirection };
+    const newScore = snake.body.length !== newSnake.body.length ? gameState.score + 1 : gameState.score;
     return {
         ...gameState,
         isGameOver: isGameOver(newSnake.body),
         snake: newSnake,
         fruit: (eatsFruit) ? generateNewFruit(boardSize) : fruit,
-        score: snake.body.length !== newSnake.body.length ? gameState.score + 1 : gameState.score
+        score: newScore,
+        gameSpeed: getGameSpeedFromScore(newScore),
     }
 }
 

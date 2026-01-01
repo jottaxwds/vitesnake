@@ -26,4 +26,5 @@ export type GameState = {
     snake: Snake;
     boardSize: number;
     fruit: BodyDot;
+    gameSpeed: number;
 }
