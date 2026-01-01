@@ -43,7 +43,7 @@ const useGameboard = () => {
     animationFrameId = requestAnimationFrame(loop);
 
     return () => cancelAnimationFrame(animationFrameId);
-  }, [gameStateRef.current.isGameOver]);
+  }, []);
 
   return { gameState, arrowDirection, reset }
 }
